@@ -1,0 +1,29 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Gatekeeper plugin for Craft CMS 3.x
+ *
+ * Gatekeeper Settings.twig
+ *
+ * @author    Tom Diggle
+ * @copyright Copyright (c) 2018 Tom Diggle
+ * @link      http://tomdiggle.com
+ * @package   Gatekeeper
+ * @since     0.1.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("tomdiggle\\gatekeeper\\assetbundles\\gatekeeper\\GatekeeperAsset") %}
+
+{{ forms.textField({
+    label: "Password"|t("gatekeeper"),
+    instructions: "Enter the password required to access the website."|t("gatekeeper"),
+    type: "password",
+    id: "password",
+    name: "password",
+    required: true,
+    value: settings.password,
+    errors: settings.getErrors("password"),
+}) }}

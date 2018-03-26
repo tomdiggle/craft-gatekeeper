@@ -1,0 +1,40 @@
+{
+    "name": "tomdiggle/gatekeeper",
+    "description": "Protect your Craft CMS website from access with a universal password.",
+    "type": "craft-plugin",
+    "version": "0.1.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "gatekeeper"
+    ],
+    "support": {
+        "docs": "https://github.com/tomdiggle/gatekeeper/blob/master/README.md",
+        "issues": "https://github.com/tomdiggle/gatekeeper/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Diggle",
+            "homepage": "http://tomdiggle.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "tomdiggle\\gatekeeper\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Gatekeeper",
+        "handle": "gatekeeper",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/tomdiggle/gatekeeper/master/CHANGELOG.md",
+        "class": "tomdiggle\\gatekeeper\\Gatekeeper"
+    }
+}

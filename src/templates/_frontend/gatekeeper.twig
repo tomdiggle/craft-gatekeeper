@@ -1,0 +1,43 @@
+{#
+/**
+ * Gatekeeper plugin for Craft CMS 3.x
+ *
+ * Gatekeeper Gatekeeper.twig
+ *
+ * @author    Tom Diggle
+ * @copyright Copyright (c) 2018 Tom Diggle
+ * @link      http://tomdiggle.com
+ * @package   Gatekeeper
+ * @since     0.1.0
+ */
+#}
+
+{% set title = "Enter Password To View The Site"|t('gatekeeper') %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }} | Gatekeeper</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="foo">
+            <h1>{{ title }}</h1>
+            <form id="login-form" method="post" accept-charset="UTF-8">
+                {{ csrfInput() }}
+                <input type="hidden" name="action" value="gatekeeper/gatekeeper/login">
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <div class="buttons">
+                    <button>Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
