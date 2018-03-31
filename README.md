@@ -2,8 +2,6 @@
 
 Protect your Craft CMS website from access with a universal password.
 
-![Screenshot](resources/img/plugin-logo.png)
-
 ## Requirements
 
 This plugin requires Craft CMS 3.0.0-beta.23 or later.
@@ -22,22 +20,16 @@ To install the plugin, follow these instructions.
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Gatekeeper.
 
-## Gatekeeper Overview
+## Configure
 
--Insert text here-
+To congifure the plugin, follow these instructions.
 
-## Configuring Gatekeeper
+1. In the Control Panel, go to Settings → Plugins and click the Gatekeeper icon.
 
--Insert text here-
+2. Then enter the password required to access the website and click save.
 
-## Using Gatekeeper
+## License
 
--Insert text here-
-
-## Gatekeeper Roadmap
-
-Some things to do, and ideas for potential features:
-
-* Release it
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
 Brought to you by [Tom Diggle](http://tomdiggle.com)
