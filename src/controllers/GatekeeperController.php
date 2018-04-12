@@ -61,7 +61,7 @@ class GatekeeperController extends Controller
         $oldMode = $this->view->getTemplateMode();
         $this->view->setTemplateMode(View::TEMPLATE_MODE_CP);
 
-        $rendered = $this->view->renderTemplate('gatekeeper/_frontend/gatekeeper.twig');
+        $rendered = $this->view->renderTemplate('gatekeeper/_frontend/gatekeeper');
         
         $this->view->setTemplateMode($oldMode);
 
