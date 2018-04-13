@@ -52,9 +52,13 @@
         .login-form {
             padding: 0 2rem 2rem;
             background: #FFFFFF;
-            width: 300px;
+            min-width: 364px;
             border-radius: .25rem;
             box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+        }
+
+        .logo {
+            margin: 1rem 0 2rem;
         }
 
         .login-form > h1 {
@@ -121,7 +125,7 @@
 
             {% if hasLogo %}
                 {% set logo = craft.rebrand.logo %}
-                <img src="{{ logo.url }}" width="{{ logo.width }}" height="{{ logo.height }}">
+                <img src="{{ logo.url }}" width="{{ logo.width }}" height="{{ logo.height }}" class="logo">
             {% else %}
                 <h1>{{ systemName }}</h1>
             {% endif %}
