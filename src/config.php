@@ -24,7 +24,6 @@
 
 return [
 
-    "enable" => true,
     "password" => '',
 
 ];
