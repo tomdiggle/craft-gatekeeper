@@ -1,5 +1,5 @@
 {
-    "name": "tomdiggle/gatekeeper",
+    "name": "tomdiggle/craft-gatekeeper",
     "description": "Protect your Craft CMS website from access with a universal password.",
     "type": "craft-plugin",
     "version": "1.0.0",
@@ -24,6 +24,12 @@
     "require": {
         "craftcms/cms": "^3.0.0-RC1"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
     "autoload": {
         "psr-4": {
           "tomdiggle\\gatekeeper\\": "src/"
