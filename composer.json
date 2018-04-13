@@ -2,7 +2,7 @@
     "name": "tomdiggle/gatekeeper",
     "description": "Protect your Craft CMS website from access with a universal password.",
     "type": "craft-plugin",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "keywords": [
         "craft",
         "cms",

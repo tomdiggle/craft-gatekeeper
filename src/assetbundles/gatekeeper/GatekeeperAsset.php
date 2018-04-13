@@ -30,7 +30,7 @@ use craft\web\assets\cp\CpAsset;
  *
  * @author    Tom Diggle
  * @package   Gatekeeper
- * @since     0.1.0
+ * @since     1.0.0
  */
 class GatekeeperAsset extends AssetBundle
 {

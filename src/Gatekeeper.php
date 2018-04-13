@@ -34,7 +34,7 @@ use yii\base\Event;
 /**
  * @author    Tom Diggle
  * @package   Gatekeeper
- * @since     0.1.0
+ * @since     1.0.0
  *
  * @property  Settings $settings
  * @method    Settings getSettings()
@@ -60,7 +60,7 @@ class Gatekeeper extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '0.1.0';
+    public $schemaVersion = '1.0.0';
 
     // Public Methods
     // =========================================================================
