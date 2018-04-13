@@ -78,6 +78,12 @@
             -moz-appearance: none;
         }
 
+        .form-error {
+            color: #e3342f;
+            font-size: .75rem;
+            font-style: italic;
+        }
+
         label {
             margin-bottom: .25rem;
             display: block;
@@ -121,12 +127,13 @@
             {% endif %}
             
             <div class="form-control">
-                <label for="password">Password</label>
+                <label for="password">{{ "Password"|t('gatekeeper') }}</label>
                 <input type="password" name="password" id="password" class="form-input" required>
+                {% if error is defined %}<p class="form-error">{{ "Invalid password"|t('gatekeeper') }}</p>{% endif %}
             </div>
 
             <div class="buttons">
-                <button id="submit" class="btn">Unlock</button>
+                <button id="submit" class="btn">{{ "Unlock"|t('gatekeeper') }}</button>
             </div>
         </form>
     </div>

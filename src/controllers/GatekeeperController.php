@@ -58,14 +58,7 @@ class GatekeeperController extends Controller
             return $this->redirect('/');
         }
         
-        $oldMode = $this->view->getTemplateMode();
-        $this->view->setTemplateMode(View::TEMPLATE_MODE_CP);
-
-        $rendered = $this->view->renderTemplate('gatekeeper/_frontend/gatekeeper');
-        
-        $this->view->setTemplateMode($oldMode);
-
-        return $rendered;
+        return $this->renderFrontendTemplate('gatekeeper/_frontend/gatekeeper');
     }
 
     /**
@@ -88,6 +81,26 @@ class GatekeeperController extends Controller
             return $this->redirect('/');
         }
 
-        return $this->actionIndex();
+        $params['error'] = true;
+
+        return $this->renderFrontendTemplate('gatekeeper/_frontend/gatekeeper', $params);
+    }
+
+    /**
+     * @param string $template
+     * @param array  $params
+     * 
+     * @return string
+     */
+    private function renderFrontendTemplate(string $template, array $params = []): string
+    {
+        $oldMode = $this->view->getTemplateMode();
+        $this->view->setTemplateMode(View::TEMPLATE_MODE_CP);
+
+        $rendered = $this->view->renderTemplate($template, $params);
+        
+        $this->view->setTemplateMode($oldMode);
+
+        return $rendered;
     }
 }
