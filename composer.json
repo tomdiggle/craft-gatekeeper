@@ -11,8 +11,8 @@
         "gatekeeper"
     ],
     "support": {
-        "docs": "https://github.com/tomdiggle/gatekeeper/blob/v1/README.md",
-        "issues": "https://github.com/tomdiggle/gatekeeper/issues"
+        "docs": "https://github.com/tomdiggle/craft-gatekeeper/blob/v1/README.md",
+        "issues": "https://github.com/tomdiggle/craft-gatekeeper/issues"
     },
     "license": "MIT",
     "authors": [
@@ -34,7 +34,7 @@
         "handle": "gatekeeper",
         "hasCpSettings": true,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/tomdiggle/gatekeeper/v1/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/tomdiggle/craft-gatekeeper/v1/CHANGELOG.md",
         "class": "tomdiggle\\gatekeeper\\Gatekeeper"
     }
 }
