@@ -34,6 +34,11 @@ class Settings extends Model
      */
     public $password = '';
 
+    /**
+     * @var string
+     */
+    public $notice = '';
+
     // Public Methods
     // =========================================================================
 
@@ -53,6 +58,8 @@ class Settings extends Model
             ['password', 'string', 'min' => 8],
             ['password', 'default', 'value' => ''],
             [['password'], 'required'],
+            ['notice', 'string'],
+            ['notice', 'default', 'value' => ''],
         ];
     }
 }

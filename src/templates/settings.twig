@@ -27,3 +27,13 @@
     value: settings.password,
     errors: settings.getErrors("password"),
 }) }}
+
+{{ forms.textField({
+    label: "Notice"|t("gatekeeper"),
+    instructions: "Enter a message that will be displayed on the login page."|t("gatekeeper"),
+    type: "text",
+    id: "notice",
+    name: "notice",
+    value: settings.notice,
+    errors: settings.getErrors("notice"),
+}) }}

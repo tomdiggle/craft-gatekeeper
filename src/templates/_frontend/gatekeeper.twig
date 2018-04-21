@@ -14,6 +14,7 @@
 
 {% set hasLogo = (CraftEdition == CraftPro and craft.rebrand.isLogoUploaded ? true : false) %}
 {% set title = "Site Protected"|t('gatekeeper') %}
+{% set notice = craft.app.getModule('gatekeeper').getSettings().notice %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,12 +59,12 @@
         }
 
         .logo {
-            margin: 1rem 0 2rem;
+            margin: 1rem 0 1.75rem;
         }
 
         .login-form > h1 {
             text-align: center;
-            margin: 1rem 0 2rem;
+            margin: 1rem 0 1.75rem;
             font-weight: 300;
         }
 
@@ -86,6 +87,14 @@
             color: #e3342f;
             font-size: .75rem;
             font-style: italic;
+        }
+
+        .notice {
+            padding: 0 0 .75rem;
+            text-align: center;
+            color: #606f7b;
+            font-size: .875rem;
+            font-weight: 500;
         }
 
         label {
@@ -129,6 +138,8 @@
             {% else %}
                 <h1>{{ systemName }}</h1>
             {% endif %}
+
+            {% if notice is defined %}<p class="notice">{{ notice }}</p>{% endif %}
             
             <div class="form-control">
                 <label for="password">{{ "Password"|t('gatekeeper') }}</label>
