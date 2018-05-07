@@ -143,7 +143,7 @@ class Gatekeeper extends Plugin
                 );
 
                 if ($this->isGuest() && !$this->isAuthenticated() && !$this->isGatekeeperRequest()) {
-                    Craft::$app->getResponse()->redirect('gatekeeper');
+                    Craft::$app->getResponse()->redirect('/gatekeeper');
                 }
             }
         );
