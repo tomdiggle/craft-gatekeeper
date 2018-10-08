@@ -55,7 +55,7 @@ class GatekeeperController extends Controller
     public function actionIndex()
     {
         if (Gatekeeper::$plugin->isAuthenticated()) {
-            return $this->redirect('/');
+            Gatekeeper::$plugin->redirectHelper('/');
         }
         
         return $this->renderFrontendTemplate('gatekeeper/_frontend/gatekeeper');
@@ -78,7 +78,7 @@ class GatekeeperController extends Controller
             $cookie->expire = time() + 3600;
             Craft::$app->getResponse()->getCookies()->add($cookie);
 
-            return $this->redirect('/');
+            Gatekeeper::$plugin->redirectHelper('/');
         }
 
         $params['error'] = true;

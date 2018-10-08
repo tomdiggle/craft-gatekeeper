@@ -23,6 +23,7 @@ use craft\web\View;
 use craft\events\RegisterUrlRulesEvent;
 
 use yii\base\Event;
+use yii\web\Response;
 
 /**
  * TODO:
@@ -143,7 +144,7 @@ class Gatekeeper extends Plugin
                 );
 
                 if ($this->isGuest() && !$this->isAuthenticated() && !$this->isGatekeeperRequest()) {
-                    Craft::$app->getResponse()->redirect('/gatekeeper');
+                    $this->redirectHelper('/gatekeeper');
                 }
             }
         );
@@ -164,6 +165,23 @@ class Gatekeeper extends Plugin
     {
         $url = Craft::$app->getRequest()->getUrl();
         return stripos($url, 'gatekeeper');
+    }
+
+    /**
+     * @param string $location
+     * @return Response
+     */
+    public function redirectHelper(string $location): Response
+    {
+        if (strpos($location, '/') !== 0) {
+            $location = '/' . $location;
+        }
+        $currentSite = Craft::$app->getSites()->getCurrentSite();
+        if ($currentSite->baseUrl) {
+            $baseUrl = Craft::getAlias($currentSite->baseUrl);
+            return Craft::$app->getResponse()->redirect(rtrim($baseUrl, '/') . $location);
+        }
+        return Craft::$app->getResponse()->redirect($location);
     }
 
     /**
