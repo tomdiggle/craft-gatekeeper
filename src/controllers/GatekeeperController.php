@@ -23,7 +23,7 @@ use yii\web\Response;
 
 /**
  * Gatekeeper Controller
- * 
+ *
  * https://craftcms.com/docs/plugins/controllers
  *
  * @author    Tom Diggle
@@ -57,7 +57,7 @@ class GatekeeperController extends Controller
         if (Gatekeeper::$plugin->isAuthenticated()) {
             return $this->redirect('/');
         }
-        
+
         return $this->renderFrontendTemplate('gatekeeper/_frontend/gatekeeper');
     }
 
@@ -71,12 +71,15 @@ class GatekeeperController extends Controller
     {
         $password = Craft::$app->getRequest()->post('password');
         $gatekeeperPassword = Gatekeeper::$settings->password;
-        
+
         if ($password === $gatekeeperPassword) {
             $cookie = new Cookie(['name' => 'gatekeeper']);
             $cookie->value = 'loggedin';
             $cookie->expire = time() + 3600;
             Craft::$app->getResponse()->getCookies()->add($cookie);
+            if ($refererUrl = Craft::$app->getRequest()->getCookies()->get('gatekeeper_referer')) {
+                return $this->redirect($refererUrl->value);
+            }
 
             return $this->redirect('/');
         }
@@ -88,8 +91,8 @@ class GatekeeperController extends Controller
 
     /**
      * @param string $template
-     * @param array  $params
-     * 
+     * @param array $params
+     *
      * @return string
      */
     private function renderFrontendTemplate(string $template, array $params = []): string
@@ -98,7 +101,7 @@ class GatekeeperController extends Controller
         $this->view->setTemplateMode(View::TEMPLATE_MODE_CP);
 
         $rendered = $this->view->renderTemplate($template, $params);
-        
+
         $this->view->setTemplateMode($oldMode);
 
         return $rendered;

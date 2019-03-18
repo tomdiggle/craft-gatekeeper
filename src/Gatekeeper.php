@@ -23,10 +23,9 @@ use craft\web\View;
 use craft\events\RegisterUrlRulesEvent;
 
 use yii\base\Event;
+use yii\web\Cookie;
 
 /**
- * TODO:
- *  When loging in redirect user to URL they wanted to go to eg. /about
  *  Improve styling of login screen
  *  Display errors when entering wrong pwd
  */
@@ -99,7 +98,7 @@ class Gatekeeper extends Plugin
     // =========================================================================
 
     /**
-     * 
+     *
      */
     protected function registerEventListeners()
     {
@@ -128,7 +127,7 @@ class Gatekeeper extends Plugin
     }
 
     /**
-     * 
+     *
      */
     protected function handleSiteRequests()
     {
@@ -143,6 +142,10 @@ class Gatekeeper extends Plugin
                 );
 
                 if ($this->isGuest() && !$this->isAuthenticated() && !$this->isGatekeeperRequest()) {
+                    $cookie = new Cookie(['name' => 'gatekeeper_referer']);
+                    $cookie->value = Craft::$app->getRequest()->getUrl();
+                    $cookie->expire = time() + 30;
+                    Craft::$app->getResponse()->cookies->add($cookie);
                     Craft::$app->getResponse()->redirect('/gatekeeper');
                 }
             }
