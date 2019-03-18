@@ -144,7 +144,7 @@ class Gatekeeper extends Plugin
                 if ($this->isGuest() && !$this->isAuthenticated() && !$this->isGatekeeperRequest()) {
                     $cookie = new Cookie(['name' => 'gatekeeper_referer']);
                     $cookie->value = Craft::$app->getRequest()->getUrl();
-                    $cookie->expire = time() + 20;
+                    $cookie->expire = time() + 30;
                     Craft::$app->getResponse()->cookies->add($cookie);
                     Craft::$app->getResponse()->redirect('/gatekeeper');
                 }
