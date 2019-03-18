@@ -26,11 +26,6 @@ use yii\base\Event;
 use yii\web\Cookie;
 
 /**
- *  Improve styling of login screen
- *  Display errors when entering wrong pwd
- */
-
-/**
  * @author    Tom Diggle
  * @package   Gatekeeper
  * @since     1.0.0
