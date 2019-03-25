@@ -55,7 +55,7 @@ class GatekeeperController extends Controller
     public function actionIndex()
     {
         if (Gatekeeper::$plugin->isAuthenticated()) {
-            return $this->redirect('/');
+            Gatekeeper::$plugin->redirectHelper('/');
         }
 
         return $this->renderFrontendTemplate('gatekeeper/_frontend/gatekeeper');
@@ -81,7 +81,7 @@ class GatekeeperController extends Controller
                 return $this->redirect($refererUrl->value);
             }
 
-            return $this->redirect('/');
+            Gatekeeper::$plugin->redirectHelper('/');
         }
 
         $params['error'] = true;
