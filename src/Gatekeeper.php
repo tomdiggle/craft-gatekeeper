@@ -165,6 +165,23 @@ class Gatekeeper extends Plugin
     }
 
     /**
+     * @param string $location
+     * @return Response
+     */
+    public function redirectHelper(string $location): Response
+    {
+        if (strpos($location, '/') !== 0) {
+            $location = '/' . $location;
+        }
+        $currentSite = Craft::$app->getSites()->getCurrentSite();
+        if ($currentSite->baseUrl) {
+            $baseUrl = Craft::getAlias($currentSite->baseUrl);
+            return Craft::$app->getResponse()->redirect(rtrim($baseUrl, '/') . $location);
+        }
+        return Craft::$app->getResponse()->redirect($location);
+    }
+
+    /**
      * @inheritdoc
      */
     protected function createSettingsModel()
