@@ -136,7 +136,7 @@ class Gatekeeper extends Plugin
                     __METHOD__
                 );
 
-                if ($this->isGuest() && !$this->isAuthenticated() && !$this->isGatekeeperRequest()) {
+                if ($this->settings->enabled && $this->isGuest() && !$this->isAuthenticated() && !$this->isGatekeeperRequest()) {
                     $cookie = new Cookie(['name' => 'gatekeeper_referer']);
                     $cookie->value = Craft::$app->getRequest()->getUrl();
                     $cookie->expire = time() + 30;

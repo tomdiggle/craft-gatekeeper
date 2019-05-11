@@ -17,6 +17,16 @@
 
 {% do view.registerAssetBundle("tomdiggle\\gatekeeper\\assetbundles\\gatekeeper\\GatekeeperAsset") %}
 
+{{ forms.lightswitchField({
+    label: "Enabled"|t("gatekeeper"),
+    instructions: "Whether Gatekeeper protection should be on or off."|t("gatekeeper"),
+    id: "enabled",
+    name: "enabled",
+    value: 1,
+    on: settings.enabled,
+    errors: settings.getErrors("enabled"),
+}) }}
+
 {{ forms.textField({
     label: "Password"|t("gatekeeper"),
     instructions: "Enter the password required to access the website."|t("gatekeeper"),
