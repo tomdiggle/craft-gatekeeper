@@ -194,10 +194,14 @@ class Gatekeeper extends Plugin
      */
     protected function settingsHtml(): string
     {
+        // Get the settings that are being defined by the config file
+        $overrides = Craft::$app->getConfig()->getConfigFromFile('gatekeeper');
+
         return Craft::$app->view->renderTemplate(
             'gatekeeper/settings',
             [
-                'settings' => $this->getSettings()
+                'settings' => $this->getSettings(),
+                'overrides' => array_keys($overrides),
             ]
         );
     }

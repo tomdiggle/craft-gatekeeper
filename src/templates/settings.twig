@@ -15,6 +15,16 @@
 
 {% import "_includes/forms" as forms %}
 
+{% macro configWarning(setting) -%}
+  {% set setting = '<code>' ~ setting ~ '</code>' %}
+  {{ 'This is being overridden by the {setting} config setting in your {file} config file.'|t('gatekeeper', {
+        setting: setting,
+        file: 'gatekeeper.php'
+  })|raw }}
+{%- endmacro %}
+
+{% from _self import configWarning %}
+
 {% do view.registerAssetBundle("tomdiggle\\gatekeeper\\assetbundles\\gatekeeper\\GatekeeperAsset") %}
 
 {{ forms.lightswitchField({
@@ -25,6 +35,7 @@
     value: 1,
     on: settings.enabled,
     errors: settings.getErrors("enabled"),
+    warning: "enabled" in overrides ? configWarning("enabled"),
 }) }}
 
 {{ forms.textField({
@@ -36,6 +47,7 @@
     required: true,
     value: settings.password,
     errors: settings.getErrors("password"),
+    warning: "password" in overrides ? configWarning("password"),
 }) }}
 
 {{ forms.textField({
@@ -46,7 +58,9 @@
     name: "notice",
     value: settings.notice,
     errors: settings.getErrors("notice"),
+    warning: "notice" in overrides ? configWarning("notice"),
 }) }}
+
 
 {{ forms.selectField({
     label: "Duration"|t("gatekeeper"),
@@ -73,4 +87,5 @@
     ],
     value: settings.duration,
     errors: settings.getErrors("duration"),
+    warning: "duration" in overrides ? configWarning("duration"),
 }) }}
