@@ -26,5 +26,5 @@ return [
 
     "password" => '',
     "notice" => '',
-
+    "duration" => 3600,
 ];

@@ -71,11 +71,12 @@ class GatekeeperController extends Controller
     {
         $password = Craft::$app->getRequest()->post('password');
         $gatekeeperPassword = Gatekeeper::$settings->password;
+        $gatekeeperCookieDuration =  Gatekeeper::$settings->duration;
 
         if ($password === $gatekeeperPassword) {
             $cookie = new Cookie(['name' => 'gatekeeper']);
             $cookie->value = 'loggedin';
-            $cookie->expire = time() + 3600;
+            $cookie->expire = time() + $gatekeeperCookieDuration;
             Craft::$app->getResponse()->getCookies()->add($cookie);
             if ($refererUrl = Craft::$app->getRequest()->getCookies()->get('gatekeeper_referer')) {
                 return $this->redirect($refererUrl->value);

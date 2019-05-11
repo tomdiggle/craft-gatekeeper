@@ -39,6 +39,11 @@ class Settings extends Model
      */
     public $notice = '';
 
+    /**
+     * @var int
+     */
+    public $duration = 3600; // 1 hour
+
     // Public Methods
     // =========================================================================
 
@@ -60,6 +65,8 @@ class Settings extends Model
             [['password'], 'required'],
             ['notice', 'string'],
             ['notice', 'default', 'value' => ''],
+            ['duration', 'integer'],
+            ['duration', 'default', 'value' => 3600],
         ];
     }
 }

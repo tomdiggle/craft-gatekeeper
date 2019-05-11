@@ -37,3 +37,30 @@
     value: settings.notice,
     errors: settings.getErrors("notice"),
 }) }}
+
+{{ forms.selectField({
+    label: "Duration"|t("gatekeeper"),
+    instructions: "Choose how long the user will have access to the website before they will have to re-input the password."|t("gatekeeper"),
+    id: "duration",
+    name: "duration",
+    options: [
+        {
+            label: "1 hour",
+            value: 3600,
+        },
+        {
+            label: "1 day",
+            value: 86400
+        },
+        {
+            label: "30 days",
+            value: 2592000
+        },
+        {
+            label: "1 year",
+            value: 31536000
+        }
+    ],
+    value: settings.duration,
+    errors: settings.getErrors("duration"),
+}) }}
