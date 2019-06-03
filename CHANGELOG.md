@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.0 - 2019-06-03
+### Add
+- 'duration' (cookie expiration) setting
+- A warning on settings screen if values are being overridden in config file
+
+### Fix
+- Issue #7 by adding an 'enabled' setting
+
 ## 1.1.1 - 2019-03-25
 ### Fix
 - Prepend baseUrl to redirects if present
