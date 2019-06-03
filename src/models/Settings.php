@@ -30,6 +30,11 @@ class Settings extends Model
     // =========================================================================
 
     /**
+     * @var bool
+     */
+    public $enabled = true;
+
+    /**
      * @var string
      */
     public $password = '';
@@ -38,6 +43,11 @@ class Settings extends Model
      * @var string
      */
     public $notice = '';
+
+    /**
+     * @var int
+     */
+    public $duration = 3600; // 1 hour
 
     // Public Methods
     // =========================================================================
@@ -55,11 +65,15 @@ class Settings extends Model
     public function rules()
     {
         return [
+            ['enabled', 'integer'],
+            ['enabled', 'default', 'value' => 0],
             ['password', 'string', 'min' => 8],
             ['password', 'default', 'value' => ''],
             [['password'], 'required'],
             ['notice', 'string'],
             ['notice', 'default', 'value' => ''],
+            ['duration', 'integer'],
+            ['duration', 'default', 'value' => 3600],
         ];
     }
 }

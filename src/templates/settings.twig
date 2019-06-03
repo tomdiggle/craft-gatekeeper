@@ -15,7 +15,28 @@
 
 {% import "_includes/forms" as forms %}
 
+{% macro configWarning(setting) -%}
+  {% set setting = '<code>' ~ setting ~ '</code>' %}
+  {{ 'This is being overridden by the {setting} config setting in your {file} config file.'|t('gatekeeper', {
+        setting: setting,
+        file: 'gatekeeper.php'
+  })|raw }}
+{%- endmacro %}
+
+{% from _self import configWarning %}
+
 {% do view.registerAssetBundle("tomdiggle\\gatekeeper\\assetbundles\\gatekeeper\\GatekeeperAsset") %}
+
+{{ forms.lightswitchField({
+    label: "Enabled"|t("gatekeeper"),
+    instructions: "Whether Gatekeeper protection should be on or off."|t("gatekeeper"),
+    id: "enabled",
+    name: "enabled",
+    value: 1,
+    on: settings.enabled,
+    errors: settings.getErrors("enabled"),
+    warning: "enabled" in overrides ? configWarning("enabled"),
+}) }}
 
 {{ forms.textField({
     label: "Password"|t("gatekeeper"),
@@ -26,6 +47,7 @@
     required: true,
     value: settings.password,
     errors: settings.getErrors("password"),
+    warning: "password" in overrides ? configWarning("password"),
 }) }}
 
 {{ forms.textField({
@@ -36,4 +58,34 @@
     name: "notice",
     value: settings.notice,
     errors: settings.getErrors("notice"),
+    warning: "notice" in overrides ? configWarning("notice"),
+}) }}
+
+
+{{ forms.selectField({
+    label: "Duration"|t("gatekeeper"),
+    instructions: "Choose how long the user will have access to the website before they will have to re-input the password."|t("gatekeeper"),
+    id: "duration",
+    name: "duration",
+    options: [
+        {
+            label: "1 hour",
+            value: 3600,
+        },
+        {
+            label: "1 day",
+            value: 86400
+        },
+        {
+            label: "30 days",
+            value: 2592000
+        },
+        {
+            label: "1 year",
+            value: 31536000
+        }
+    ],
+    value: settings.duration,
+    errors: settings.getErrors("duration"),
+    warning: "duration" in overrides ? configWarning("duration"),
 }) }}

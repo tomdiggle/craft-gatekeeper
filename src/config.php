@@ -23,8 +23,8 @@
  */
 
 return [
-
+    "enabled" => true,
     "password" => '',
     "notice" => '',
-
+    "duration" => 3600,
 ];
