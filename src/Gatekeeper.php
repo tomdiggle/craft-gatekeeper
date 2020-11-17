@@ -20,6 +20,7 @@ use craft\web\Application;
 use craft\web\UrlManager;
 use craft\web\Session;
 use craft\web\View;
+use craft\web\Response;
 use craft\events\RegisterUrlRulesEvent;
 
 use yii\base\Event;
