@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.1 - 2020-11-17
+### Fix
+- psr-4 autoloading standard error (Composer 2 compatibility)
+- Error on redirect from missing namespace (Thanks [st-mcd](https://github.com/st-mcd))
+
 ## 1.2.0 - 2019-06-03
 ### Add
 - 'duration' (cookie expiration) setting
