@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2018 Tom Diggle
  */
 
-namespace tomdiggle\gatekeeper\assetbundles\Gatekeeper;
+namespace tomdiggle\gatekeeper\assetbundles\gatekeeper;
 
 use Craft;
 use craft\web\AssetBundle;
